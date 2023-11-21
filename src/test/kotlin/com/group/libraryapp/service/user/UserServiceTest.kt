@@ -13,8 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
 class UserServiceTest @Autowired constructor(
-  private val userRepository: UserRepository,
-  private val userService: UserService,
+    private val userRepository: UserRepository,
+    private val userService: UserService,
 ) {
 
     @AfterEach
@@ -47,10 +47,12 @@ class UserServiceTest @Autowired constructor(
     @DisplayName("유저 조회가 정상적으로 동작한다")
     fun getUsersTest() {
         // given
-        userRepository.saveAll(listOf(
-          User("A", 20),
-            User("B", null),
-        ))
+        userRepository.saveAll(
+            listOf(
+                User("A", 20),
+                User("B", null),
+            )
+        )
 
         // when
         val results = userService.getUsers()
@@ -67,7 +69,7 @@ class UserServiceTest @Autowired constructor(
         //given
         val savedUser = userRepository.save(User("A", null));
 
-        val request = UserUpdateRequest(savedUser.id, "B")
+        val request = UserUpdateRequest(savedUser.id!!, "B")
 
         //when
         userService.updateUserName(request)
