@@ -5,5 +5,5 @@ import java.util.Optional
 
 interface UserRepository : JpaRepository<User, Long> {
 
-    fun findByName(name: String): Optional<User>
+    fun findByName(name: String): User?
 }
