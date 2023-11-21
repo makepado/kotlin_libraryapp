@@ -5,7 +5,12 @@ public class UserUpdateRequest {
   private long id;
   private String name;
 
-  public long getId() {
+	public UserUpdateRequest(long id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
+	public long getId() {
     return id;
   }
 
